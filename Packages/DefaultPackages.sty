@@ -1,0 +1,55 @@
+\ProvidesPackage{DefaultPackages}[2022/09/06  v1.0, packages needed for every project in any time, does not include page layouts Packages]
+
+
+%%%%% For any questions about using these packages, your best resource is the official documentation found in https://ctan.org/ - just search for the package name. %%%%%
+
+
+%%% Math - General %%%
+\RequirePackage{amsthm}	% Meta page layout for maths - "proof" env, theorem etc.
+\RequirePackage{newpxmath} % Palatino Math Font
+\RequirePackage{newpxtext} % Palatino Text Font
+\RequirePackage{amsfonts,amsmath,amssymb,mathrsfs} % Standard Mathematics Packages
+\RequirePackage{mathtools}	% Fixes amsmath bugs, more environments 
+\RequirePackage{thmtools} % Extra Tools for theorems
+\RequirePackage{thm-restate} % Restateable Theorems
+
+%\RequirePackage[mathscr]{euscript}	%Differet Caligraphy
+% 	Can also use mathcal command!
+\RequirePackage{xfrac} % Allows for x/y fractions - use \sfrac command
+
+
+%%% Math - Drawings and Algorithms %%%
+\RequirePackage[x11names]{xcolor}	% As it sounds - foreground and background colors, text color etc.
+\RequirePackage{tikz}	% DRAW MATH <3
+\usetikzlibrary{automata,positioning,arrows, calc}	%Automata extention - tikz
+\RequirePackage[new]{old-arrows}	% Changes the look of arrows, use \rightarrow or \varrightarrow for diff. AFTER amsmath
+\RequirePackage{algorithm}	% Write algorithms pseudocode
+\RequirePackage[noend]{algpseudocode}	% Also
+\RequirePackage{qtree}
+\RequirePackage[skins,breakable]{tcolorbox}	% Allows colored boxes
+\RequirePackage{subcaption}
+\RequirePackage[framemethod=tikz]{mdframed}	% Allows frames with different options
+
+
+
+%%% Text and Figures Setup %%%
+\RequirePackage[shortlabels]{enumitem} % Manipulation of enumerate, itemize and description
+\RequirePackage{soul}	%Allows text manipulation - underline, strikethrough etc. Can edit settings, look for documentation.
+\RequirePackage{ulem}	% Underline and Emphasis options
+\RequirePackage{fancyhdr}	% Page Layout configuration
+\RequirePackage{setspace}	% Set line spacing
+\RequirePackage{framed}	% Allows boxes, shades and frames
+\RequirePackage{graphicx}	% Optional arguments for \includegraphics env
+\RequirePackage{booktabs}	% Provides commands for quality tables in LaTeX
+\RequirePackage{hyperref}	% Cross referencing package
+\hypersetup{colorlinks=true}
+\RequirePackage{listings}	
+
+
+%%% Other Shit %%%
+\RequirePackage{blindtext}	% A Lorem Ipsum Package 
+\RequirePackage{xspace}	% Literally adds a single command for having a "smart space" after macro
+%\RequirePackage{enumitem}
+%\RequirePackage{float}
+\RequirePackage{xargs} % Use more than one optional parameter in a new commands
+\RequirePackage[colorinlistoftodos,prependcaption,textsize=tiny,linecolor=DeepSkyBlue1,backgroundcolor=DeepSkyBlue1!25,bordercolor=DeepSkyBlue1]{todonotes} % Allows for sidenote boxes

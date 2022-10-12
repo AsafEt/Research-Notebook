@@ -1,0 +1,84 @@
+\documentclass[a4paper, 10pt]{book}
+\include{Packages/ResearchNotesPreamble}
+\title{Research Notes}
+\author{Asaf Etgar}
+\begin{document}
+\maketitle
+\chapter{Metric Repair}
+\section{Graph Metric repair}
+Algorithms are faster when the distance between datapoints satisfy a metric. Since data is noisy, usually don't satisfy metric - we want to repair as few entries as possible. 
+	Let $G = (V,E,w)$ be a weighted graph where $w:V\to \RR_{\ge 0}$ is a weight function. We think of $w$ as a symmetric $n\times n$ matrix with $0$ diagonal.
+	\begin{defn}[Graph Metric Repair] Let $G$ be as described above, and let $\Omega\subset \RR$. The GMR problem is 
+	\[\argmin{W\in Sym_{n}(\Omega)} \norm{W}_0 \text{ such that }w + W \text{ is a metric on }G.
+	\]
+	The \emph{support} of a solution $W$ is the set of edges $e$ with $W(e)\ne 0$. A solution is simply $W$ that satisfies $w+W$ is a metric, and a solution is optimal if it also minimizes $\ell_0$.
+	When $\Omega = \RR_{\ge 0}$ ($\RR_{\le 0}$) this is the \emph{increase (decrease) only} setting. 
+	\end{defn}
+	A cycle $C$ is said to be \emph{broken} if there exists $h\in E(C)$ such that $w(h) > \sum_{e\in C\setminus h}w(e)$. In such case we call $h$ a \emph{heavy} edge, and other edges are \emph{light}. An important observation is if the shortest path between two neighbors is not the edge connecting them, then this edge is a heavy edge in a cycle.\\
+	
+	In \cite{fan2019generalized} it is shown that:
+	\begin{itemize}
+		\item The decrease only problem can be solved in cubic time.
+		\item The support of a solution (to increase, and regular problem) must contain at least one edge from any broken cycle.
+		\item $MULTICUT\le_{APX,p} MR(G,\RR_{\ge 0})$ - showing it is $\NPh$ ,and $APX$ hard.
+		\item $MR(G,\RR_{\ge 0})\le_{APX,p} MR(G,\RR)$.
+		\item $L-LB-CUT \le MR(G,\RR_{\ge 0}$.
+		\item Fixed parameter analysis for $\varsigma$-chordal graphs.
+		\item Approximation algorithms for increase and regular cases.
+	\end{itemize}
+	A relaxation of this problem, in some sense, is to find the $\ell_0$ distance to the metric cone:
+	\begin{defn}
+		[Metric Violation Distance]
+		Given $x\in \RR_{\ge 0}^{[n]\choose 2}$, find $\argmin{y}\norm{x-y}_0$.
+	\end{defn}
+	In \cite{cohen2022fitting} they provide an $O(\log n)$ approximation algorithm that runs in cubic time for this problem, which is tight (assuming a standard fine-grained complexity conjecture). This is a randomized recursive algorithm, based on random pivoting and corrections. When considering ultrametrics, there is a deterministic $\Theta(1)$ approximation algorithm, which uses correlation clustering \cite{bansal2004correlation} as a subroutine. They also consider the weighted version (i.e, importance hierarchy over the distances) and provide $O(\log n \log\log n)$ approximation for ultrametrics.
+	\section{Tree Fitting}
+	\begin{defn}[$\ell_p$-fitting]
+In the $\ell_p$-fitting problem, we get as an input a set $S$ with a metric $\Dd:{S\choose 2}	\To \RR>0$ and look for an output tree metric $T$ that spans $S$ and fits $\Dd$ is the sense of minimizing $\norm{T-\Dd}_p$ (when only considering points in $S$ in the definition).
+	\end{defn}
+	In \cite{cohen2022fitting} they give an $\Theta(1)$ approximation for the case of $\ell_1$ (and claim that it does not generalize nicely to other norms). These problems are APX hard, so this is the best we could hope for. Their algorithm uses (unweighted minimizing disagreements) Correlation Clustering on $K_n$ \cite{bansal2004correlation}. 
+	Nevertheless, for a general $p$ we can get $O(\log n \log\log n)$ approximation.
+	\section{Questions and ideas}
+	
+	\chapter{Landmarks}
+	\section{Preliminaries}
+	\begin{defn}[Graph Spanned]
+		Given a weighted graph $(G,w)$ a graph spanner $G'$ is a spanning subgraph that maintains the graph distance up to (additive or multiplicative) error. 
+		Most spanners can be specified with a \emph{distortion function} $f:\RR\to \RR$ and a subset $P\subset V\times V$ that specifies for which pairs we could distort the distance, i.e
+	\[
+	\forall(u,v)\in P\quad d_{G'}(u,v)\le f(d(u,v))
+	\]
+	\end{defn}
+	The type of spanner is defined by the type of $f$ - additive, multiplicative, linear etc.
+	
+	\paragraph{Why is this important?} 
+	Most (graph) learning algorithms today require that all nodes are present in the training stage. However, this is very limiting. We would like to sample (in a sophisticated way) nodes and neighbourhoods such that training on these samples would generalize nicely to unseen nodes. 
+	\appendix
+	\chapter{Extra Definitions}
+	\begin{defn}
+		[Ultrametric] a metric $d$ is said to be an Ultrametric if the triangle inequality can be strengthened to \[
+		\forall x,y,z \quad d(x,y) \le \max\cbk{d(x,z),d(z,y)}
+		\]
+	\end{defn}
+	\begin{defn}
+		[Tree Metric] Given a set $S$, a tree metric on $S$ is a (positively) weighted tree $T$ such that $S\subset V(T)$.
+	\end{defn}
+	\begin{defn}
+		[MULTICUT] Let $G$ be a weighted graph, and $P = \cbk{(s_i,t_i)}_{i=1}^n$ pairs of vertices. The MULTICUT problem asks to find a minimal weight $M\subset E$ s.t $G\setminus M$ disconnects all pairs in $P$.
+	\end{defn}
+	\begin{remark}
+		Known to be $\NPh$ to approximate if Unique Game Conjecture is true.
+	\end{remark}
+	\begin{defn}
+		[LB-CUT] Given $L$ and a graph $G$ with specified $(s,t)$, find a minimum size subset $M\subset E$ such that $d_{G\setminus M}(s,t)\ge L$.
+	\end{defn}
+	\begin{remark}
+		Fixing $L$, $\NPh$ to approximate within $\Omega(\sqrt{L})$.
+	\end{remark}
+
+	
+
+
+\bibliography{refs}
+\bibliographystyle{alpha}
+\end{document}

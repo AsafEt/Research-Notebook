@@ -1,0 +1,230 @@
+\ProvidesPackage{mathnotation}[2021/04/07  v1.01 Easy Math Start package]
+
+% This package is meant to be an easy start for mathematics using LaTeX. Simplifying commands, adding shortcuts etc.
+
+
+%%% Packages Needed %%%
+
+\RequirePackage{DefaultPackages} % Adds Standard Math Packages
+\RequirePackage{dsfont} % doublestroke font - used only for  \one
+\RequirePackage{esint} % special integrals https://ctan.org/pkg/esint?lang=en
+%\RequirePackage{faktor} % better quitient
+%\RequirePackage{algorithm}
+
+%%%%%%%%%%%%%%%%%
+%%% Lettering %%%
+%%%%%%%%%%%%%%%%%
+
+% Blackboard Math
+\newcommand{\one}{\ensuremath{\mathds{1}}}
+\renewcommand{\AA}{\ensuremath{\mathbb{A}}}
+\newcommand{\BB}{\ensuremath{\mathbb{B}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\DD}{\ensuremath{\mathbb{D}}}
+\newcommand{\EE}{\ensuremath{\mathbb{E}}}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}}
+\newcommand{\GG}{\ensuremath{\mathbb{G}}}
+\newcommand{\HH}{\ensuremath{\mathbb{H}}}
+\newcommand{\II}{\ensuremath{\mathbb{I}}}
+\newcommand{\JJ}{\ensuremath{\mathbb{J}}}
+\newcommand{\KK}{\ensuremath{\mathbb{K}}}
+\newcommand{\LL}{\ensuremath{\mathbb{L}}}
+\newcommand{\MM}{\ensuremath{\mathbb{M}}}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\OO}{\ensuremath{\mathbb{O}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}}
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\renewcommand{\SS}{\ensuremath{\mathbb{S}}}
+\newcommand{\TT}{\ensuremath{\mathbb{T}}}
+\newcommand{\UU}{\ensuremath{\mathbb{U}}}
+\newcommand{\VV}{\ensuremath{\mathbb{V}}}
+\newcommand{\WW}{\ensuremath{\mathbb{W}}}
+\newcommand{\XX}{\ensuremath{\mathbb{X}}}
+\newcommand{\YY}{\ensuremath{\mathbb{Y}}}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+
+% Caligraphic
+\newcommand{\Aa}{\ensuremath{\mathcal{A}}}
+\newcommand{\Bb}{\ensuremath{\mathcal{B}}}
+\newcommand{\Cc}{\ensuremath{\mathcal{C}}}
+\newcommand{\Dd}{\ensuremath{\mathcal{D}}}
+\newcommand{\Ee}{\ensuremath{\mathcal{E}}}
+\newcommand{\ee}{\mbox{{\scriptsize\ensuremath{\mathcal{E}}}}}
+\newcommand{\Ff}{\ensuremath{\mathcal{F}}}
+\newcommand{\Gg}{\ensuremath{\mathcal{G}}}
+\newcommand{\Hh}{\ensuremath{\mathcal{H}}}
+\newcommand{\Ii}{\ensuremath{\mathcal{I}}}
+\newcommand{\Jj}{\ensuremath{\mathcal{J}}}
+\newcommand{\Kk}{\ensuremath{\mathcal{K}}}
+\newcommand{\Ll}{\ensuremath{\mathcal{L}}}
+\newcommand{\Mm}{\ensuremath{\mathcal{M}}}
+\newcommand{\Nn}{\ensuremath{\mathcal{N}}}
+\newcommand{\Oo}{\ensuremath{\mathcal{O}}}
+\newcommand{\Pp}{\ensuremath{\mathcal{P}}}
+\newcommand{\Qq}{\ensuremath{\mathcal{Q}}}
+\newcommand{\Rr}{\ensuremath{\mathcal{R}}}
+\newcommand{\Ss}{\ensuremath{\mathcal{S}}}
+\newcommand{\Tt}{\ensuremath{\mathcal{T}}}
+\newcommand{\Uu}{\ensuremath{\mathcal{U}}}
+\newcommand{\Vv}{\ensuremath{\mathcal{V}}}
+\newcommand{\Ww}{\ensuremath{\mathcal{W}}}
+\newcommand{\Xx}{\ensuremath{\mathcal{X}}}
+\newcommand{\xx}{\mbox{{\scriptsize\ensuremath{\mathcal{X}}}}}
+\newcommand{\Yy}{\ensuremath{\mathcal{Y}}}
+\newcommand{\Zz}{\ensuremath{\mathcal{Z}}}
+
+% Fix ugly letters from basic latex
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+
+% Other Letters
+\newcommand{\Chi}{\mbox{\large$\chi$}}
+
+% Relations Notations
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%% With Input %%%
+%%%%%%%%%%%%%%%%%%
+
+
+% Parentheses - Taken from Sleektemplate. Height adjusts automatically.
+\newcommand{\rbk}[1]{\left(#1\right)} % round brackets (parentheses)
+\newcommand{\cbk}[1]{\left\{#1\right\}} % curly brackets {braces}
+\newcommand{\sbk}[1]{\left[#1\right]} % square brackets [brackets]
+\newcommand{\abs}[1]{\left|#1\right|} % absolute value |x|
+\newcommand{\tbk}[1]{\ensuremath{\left\langle #1\right\rangle}} % triangle <brackets>
+\newcommand{\norm}[1]{\left\|#1\right\|} % norm ||x||
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+
+
+
+% Differentiation
+\newcommand{\dif}[2]{\ensuremath{\frac{d #1 }{d #2} }}
+\newcommand{\diff}[2]{\ensuremath{\frac{d^2 #1 }{d #2^2} }}
+\newcommand{\pdif}[2]{\ensuremath{\frac{\partial #1 }{\partial #2} }}
+\newcommand{\pdiff}[2]{\ensuremath{\frac{\partial^2 #1 }{\partial #2^2} }}
+
+
+% Probability and Distributions
+\newcommand{\Ber}[1]{\textrm{Ber}\left[ #1 \right]}
+\newcommand{\Bin}[1]{\textrm{Bin}\left[ #1 \right]}
+\newcommand{\Pois}[1]{\textrm{Pois}\left[ #1 \right]}
+\newcommand{\Geo}[1]{\textrm{Geo}\left[ #1 \right]}
+\newcommand{\Uni}[1]{\textrm{Uni}\left[ #1 \right]}
+\newcommand{\prob}[1]{\textrm{Pr}\left[ #1 \right]}
+\newcommand{\Lap}[1]{\textrm{Lap}\left[ #1 \right]}
+\newcommand{\Exp}[1]{\EE\left[ #1 \right]}
+\newcommand{\Gaus}[1]{\Nn\left[ #1 \right]}
+
+
+% General Notation
+\newcommand{\To}{\ensuremath{\longrightarrow}}
+\newcommand{\embed}{\ensuremath{\longhookrightarrow}}
+\newcommand{\nim}{\stackrel}	% Over a symbol
+\newcommand{\argmin}{\textrm{argmin}}
+\newcommand{\blank}{\huge\textvisiblespace}
+\newcommand{\gen}[1]{\overset{*}{\underset{#1}\Longrightarrow}}
+\renewcommand{\phi}{\varphi}
+
+% Optimization
+\newcommand{\argmax}[1]{\underset{ #1 }{\textrm{argmax }}}
+\renewcommand{\argmin}[1]{\underset{ #1 }{\textrm{argmin }}}
+
+% Sets and Classes names
+%Categories
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Rel}{\text{Rel}}
+\newcommand{\Grp}{\text{Grp}}
+\newcommand{\Set}{\text{Set}}
+\newcommand{\Met}{\text{Met}}
+\newcommand{\Ordgal}{\widetilde{\text{Ord}}}
+\newcommand{\Com}{\text{Com}}
+\newcommand{\Rng}{\text{Rng}}
+\newcommand{\Ab}{\text{Ab}}
+\newcommand{\Vect}{\text{Vec}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Fun}{\text{Func}}
+\newcommand{\Nat}{\text{Nat}}
+\newcommand{\Cat}{\text{Cat}}
+\newcommand{\Log}{\text{Log}}
+\newcommand{\op}{\textrm{op}}
+
+% Computability and Complexity
+\DeclareMathOperator{\Prefix}{Pre}
+\newcommand{\prefix}[1]{\Prefix\rbk{#1}}
+\newcommand{\suff}[1]{\textrm{Suff}(#1)}
+\newcommand{\Reg}{\textrm{REG}}
+\newcommand{\RE}{\textrm{RE}}
+\newcommand{\coRE}{\textrm{coRE}}
+\newcommand{\Rcr}{\textrm{R}}
+\newcommand{\CFL}{\textrm{CFL}}
+\newcommand{\TM}{\textrm{TM }}
+\newcommand{\HALT}{\textrm{HALT}}
+\newcommand{\ALL}{\textrm{ALL}}
+\newcommand{\TIME}{\textrm{TIME}}
+\newcommand{\NTIME}{\textrm{NTIME}}
+\newcommand{\PTIME}{\textrm{PTIME}}
+\newcommand{\SPACE}{\textrm{SPACE}}
+\newcommand{\NSPACE}{\textrm{NSPACE}}
+\newcommand{\NPSPACE}{\textrm{NP}\textsf{SPACE}}
+\newcommand{\PSPACE}{\textrm{P}\textsf{SPACE}}
+\newcommand{\coNPSPACE}{\textrm{coNP}\textsf{SPACE}}
+\newcommand{\coPSPACE}{\textrm{coP}\textsf{SPACE}}
+\newcommand{\EXPTIME}{\textrm{EXPTIME}}
+\newcommand{\NPTIME}{\textrm{NPTIME}}
+
+\DeclareMathOperator{\NP}{NP}
+\DeclareMathOperator{\NPc}{NP-complete}
+\DeclareMathOperator{\NPh}{NP-hard}
+\DeclareMathOperator{\coNP}{coNP}
+\DeclareMathOperator{\coNPc}{coNP-complete}
+\DeclareMathOperator{\coNPh}{coNP-hard}
+\renewcommand{\P}{\textrm{P}}
+
+% Oh Notations:
+\newcommand{\Oh}[1]{\underset{\scriptscriptstyle#1}{O}}
+\newcommand{\oh}[1]{\underset{\scriptscriptstyle#1}{o}}
+\newcommand{\Ohmega}[1]{\underset{\scriptscriptstyle#1}{\Omega}}
+\newcommand{\ohmega}[1]{\underset{\scriptscriptstyle#1}{\omega}}
+\newcommand{\ohtheta}[1]{\underset{\scriptscriptstyle#1}{\theta}}
+
+%Linear Algebra
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\diag}{diag}
+
+
+% Geometry
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rad}{radius}
+
+% Cryptography
+\newcommand{\Gen}{\textrm{Gen}}
+\newcommand{\Enc}{\textrm{Enc}}
+\newcommand{\Mac}{\textrm{Mac}}
+\newcommand{\Dec}{\textrm{Dec}}
+\newcommand{\Vrfy}{\textrm{Vrfy}}
+\newcommand{\IND}{\textrm{IND}}
+\newcommand{\KeyGen}{\textrm{KeyGen}}
+\newcommand{\MacForge}{\textrm{MacForge}}
+
+%Algorithms
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+%%% TODOS %%%
+
+%tikz settings - To Read!!!
+%\tikzset{main node/.style={circle,draw,minimum size=0.8cm,inner sep=0pt},}
+%\tikzset{edge/.style = {->,> = latex'}}

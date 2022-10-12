@@ -1,0 +1,105 @@
+\ProvidesPackage{exercisetheorems}[2021/04/07  v1.01 Theorems enviroments lecture notes]
+
+% The package provides theorem enviroments designed for exercises. 
+
+%%%%%%%%%%%%%%%%%%%%
+%%% Requirements %%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{tikz}	% DRAW MATH <3
+\RequirePackage{amsthm}	% Meta page layout for maths - "proof" env, theorem etc.
+%\RequirePackage{thmtools}
+\RequirePackage{color}	% As it sounds - foreground and background colors.
+\RequirePackage[framemethod=tikz]{mdframed}	% Allows frames with different options
+
+
+
+\define@key{thmdef}{mdthm}[{}]{
+	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}
+}
+
+
+%%%%%%%%%%%%%%%
+%%% Styling %%%
+%%%%%%%%%%%%%%%
+
+
+%%% Colors %%%
+% This is super easy - write the RGB values of the color you want. Many websites provide translation between different formats.
+\definecolor{lightYellow}{RGB}{255, 252, 237}
+\definecolor{hardYellow}{RGB}{255, 225, 90}
+\definecolor{hardBlue}{RGB}{140, 201, 248}
+\definecolor{lightBlue}{RGB}{244, 248, 255}
+
+
+
+%%% MD Styles %%%
+% Define more box styles here. For properties and examples - read mdframed documentation
+\mdfdefinestyle{lightYellow}{
+	outerlinewidth = 2,
+	roundcorner = 5pt,
+	backgroundcolor=lightYellow,
+	outerlinecolor=hardYellow,
+	linecolor=lightYellow
+}
+
+\mdfdefinestyle{lightBlue}{
+	outerlinewidth = 2,
+	roundcorner = 5pt,
+	backgroundcolor=lightBlue,
+	outerlinecolor=hardBlue,
+	linecolor=lightBlue
+}
+
+
+%% Boxes %%%
+% I like to use boxes when writing multiple definitions/ theorems consecutively, and within the boxes use the regular environments (i.e - not framed). This is not a must, of course.
+\newmdenv[style=lightYellow]{yellowBox}
+\newmdenv[style=lightBlue]{blueBox}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%% Environments %%%
+%%%%%%%%%%%%%%%%%%%%
+
+%%% Theorems %%%
+% The syntax is straightforward.
+
+%Theorem Style
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[claim]
+\newtheorem{question}{Question}
+\newtheorem*{problem}{Problem}
+\newtheorem*{conjecture}{Conjecture}
+
+
+
+% Definition Style
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{example}{Example}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{sol}{Solution}
+
+%Remark Style
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% Proof environment - might not want to add this. This code allows different numbering for proofs. 
+%\let\proof\relax % overwrite proof environment
+%\let\endproof\relax
+%\newtheorem{proof}{Proof}[thm]
+
+
+%%% Framed theorems and examples %%%
+%\declaretheorem[mdthm={style=lightBlue}, sibling=thm, name= Theorem]{fthm}
+%\declaretheorem[mdthm={style=lightYellow}, sibling=defn, name= Definition]{fdefn}
+%
+%
+%\newtheoremstyle{named}{}{}{}{}{\bfseries}{}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{mythrm}{}

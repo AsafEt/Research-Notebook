@@ -1,0 +1,20 @@
+\ProvidesPackage{GeneralCommands}[2022/07/31  v1.0 General Commands I think are beneficial for any project, requires DefaultePackages ]
+
+\RequirePackage{DefaultPackages}
+
+%%% Default Textual Changes %%%
+\renewcommand{\thefootnote}{\Roman{footnote}} 
+% Redefine \emph to italic by default
+\let\emph\relax % remove old defn
+\DeclareTextFontCommand{\emph}{\itshape}
+\DeclareTextFontCommand{\Emph}{\itshape\bfseries}
+
+%%% Commands for notes %%%
+\newcommandx{\Todo}[2][1=]{\todo[linecolor=DeepSkyBlue1,backgroundcolor=DeepSkyBlue1!25,bordercolor=DeepSkyBlue1,#1]{#2}}
+\newcommandx{\Note}[2][1=]{\todo[linecolor=green,backgroundcolor=green!25,bordercolor=green,#1]{#2}}
+\newcommandx{\Revised}[2][1=]{\todo[linecolor=orange,backgroundcolor=orange!25,bordercolor=orange,#1]{#2}}
+
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%% Boxes
